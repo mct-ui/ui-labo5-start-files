@@ -1,0 +1,254 @@
+/*---------------------------------------/*
+ # TOOLS
+/*---------------------------------------*/
+
+// a function to get the color from the palette
+@function get-color($palette, $color) {
+  @return map-get(map-get($palettes, $palette), $color);
+}
+
+/*---------------------------------------/*
+ # SETTINGS
+/*---------------------------------------*/
+
+/*
+    Settings: Colors
+*/
+
+$color-blue: #1abaff;
+$color-blue-hue: hue($color-blue);
+$color-blue-saturation: saturation($color-blue);
+
+$color-teal: #1affba;
+$color-teal-hue: hue($color-teal);
+$color-teal-saturation: saturation($color-teal);
+
+$color-gray-hue: hue($color-blue);
+$color-gray-saturation: 10%;
+
+$palettes: (
+  color-gray: (
+    100: hsl($color-gray-hue, $color-gray-saturation, 95%),
+    200: hsl($color-gray-hue, $color-gray-saturation, 90%),
+    300: hsl($color-gray-hue, $color-gray-saturation, 80%),
+    400: hsl($color-gray-hue, $color-gray-saturation, 70%),
+    500: hsl($color-gray-hue, $color-gray-saturation, 50%),
+    600: hsl($color-gray-hue, $color-gray-saturation, 40%),
+    700: hsl($color-gray-hue, $color-gray-saturation, 30%),
+    800: hsl($color-gray-hue, $color-gray-saturation, 20%),
+    900: hsl($color-gray-hue, $color-gray-saturation, 10%),
+  ),
+  color-blue: (
+    100: hsl($color-blue-hue, $color-blue-saturation - 10%, 95%),
+    200: hsl($color-blue-hue, $color-blue-saturation - 10%, 90%),
+    300: hsl($color-blue-hue, $color-blue-saturation - 5%, 80%),
+    400: hsl($color-blue-hue, $color-blue-saturation - 5%, 65%),
+    500: hsl($color-blue-hue, $color-blue-saturation, 50%),
+    600: hsl($color-blue-hue, $color-blue-saturation + 5%, 40%),
+    700: hsl($color-blue-hue, $color-blue-saturation + 5%, 30%),
+    800: hsl($color-blue-hue, $color-blue-saturation + 10%, 20%),
+    900: hsl($color-blue-hue, $color-blue-saturation + 10%, 10%),
+  ),
+  color-teal: (
+    100: hsl($color-teal-hue, $color-teal-saturation - 10%, 95%),
+    200: hsl($color-teal-hue, $color-teal-saturation - 10%, 90%),
+    300: hsl($color-teal-hue, $color-teal-saturation - 5%, 80%),
+    400: hsl($color-teal-hue, $color-teal-saturation, 70%),
+    500: hsl($color-teal-hue, $color-teal-saturation, 50%),
+    600: hsl($color-teal-hue, $color-teal-saturation + 5%, 45%),
+    700: hsl($color-teal-hue, $color-teal-saturation + 5%, 35%),
+    800: hsl($color-teal-hue, $color-teal-saturation + 10%, 25%),
+    900: hsl($color-teal-hue, $color-teal-saturation + 10%, 15%),
+  ),
+);
+
+$color-text: get-color(color-gray, 900);
+$color-text-light: get-color(color-gray, 700);
+$color-text-lighter: get-color(color-gray, 500);
+
+$color-primary: get-color(color-blue, 600);
+$color-primary-light: get-color(color-blue, 500);
+$color-primary-lighter: get-color(color-blue, 400);
+$color-primary-dark: get-color(color-blue, 700);
+
+$color-border: get-color(color-gray, 200);
+$color-border-light: get-color(color-gray, 100);
+$color-border-dark: get-color(color-gray, 300);
+
+/*
+    Settings: Typography
+*/
+
+$root-font-size: 16;
+
+// modular scale ratio
+$ratio: 1.125;
+
+// font-sizes
+$ms0: calc($root-font-size / 16 * 1rem); // 16px
+$ms-1: calc($ms0 / $ratio); // 14px
+$ms-2: calc($ms-1 / $ratio); // 12px
+$ms1: calc($ms0 * $ratio); // 18px
+$ms2: calc($ms1 * $ratio); // 20px
+$ms3: calc($ms2 * $ratio); // 23px
+$ms4: calc($ms3 * $ratio); // 26px
+$ms5: calc($ms4 * $ratio); // 32px
+$ms6: calc($ms5 * $ratio); // 36px
+$ms7: calc($ms6 * $ratio); // 41px
+$ms8: calc($ms7 * $ratio); // 46px
+$ms9: calc($ms8 * $ratio); // 52px
+$ms10: calc($ms9 * $ratio); // 58px
+$ms11: calc($ms10 * $ratio); // 66px
+
+$font-family-primary: "Helvetica Neue", Helvetica, arial, sans-serif;
+$font-family-secondary: "Times New Roman", Times, serif;
+
+/*
+    Settings: Spacing
+*/
+
+// baseline unit
+$baseline: 0.5rem;
+
+// spacing scale
+$space-xxs: calc($baseline * 0.5); // 4px
+$space-xs: calc($baseline * 1); // 8px
+$space-s: calc($baseline * 2); // 16px
+$space-m: calc($baseline * 3); // 24px
+$space-l: calc($space-m * 2); // 32px
+$space-xl: calc($space-m * 2); // 48px
+$space-xxl: calc($space-l * 2); // 64px
+$space-xxxl: calc($space-xl * 2); // 96px
+
+/*---------------------------------------/*
+ # GENERIC
+/*---------------------------------------*/
+
+*,
+*:before,
+*:after {
+  // Reset box-sizing
+}
+
+* {
+  // Reset margin and font-size and font-weight
+}
+
+img {
+  // make images block level elements
+  // make images responsive
+}
+
+/*---------------------------------------/*
+ # ELEMENTS
+/*---------------------------------------*/
+
+/*
+    Elements: Page
+    ---
+    Default markup for page level elements
+*/
+
+html {
+}
+
+/*
+    Customize the background color and color to match your design.
+*/
+
+::selection {
+}
+
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+
+h1 {
+}
+
+h2 {
+}
+
+h3 {
+}
+
+h4,
+h5,
+h6 {
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+}
+
+ul,
+ol {
+}
+
+li ul,
+li ol {
+}
+
+blockquote {
+}
+
+figcaption {
+}
+
+hr {
+}
+
+a {
+}
+
+a:hover {
+}
+
+a:visited {
+}
+
+a:active {
+}
+
+/*---------------------------------------/*
+ # OBJECTS
+/*---------------------------------------*/
+
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row with padding
+*/
+
+.o-row {
+}
+
+/*
+    Objects: Container
+    ---
+    Creates a horizontal container that sets de global max-width
+*/
+
+.o-container {
+}
+
+/*
+    Objects: Layout
+    ---
+    Creates a Layout with flexbox
+*/
+
+/*---------------------------------------/*
+ # COMPONENTS
+/*---------------------------------------*/
+
+/*---------------------------------------/*
+ # UTILITIES
+/*---------------------------------------*/
