@@ -7,13 +7,32 @@
   @return map-get(map-get($palettes, $palette), $color);
 }
 
+//
+// Media Query mixin
+// @include mq(#point, #query1, #query2);
+//
+
+@mixin mq($breakpoint, $query1: min, $query2: width) {
+  $query: map-get($breakpoints, $breakpoint);
+
+  @if $query != null {
+    @media (#{$query1}-#{$query2}: #{$query}) {
+      @content;
+    }
+  } @else {
+    @media (#{$query1}-#{$query2}: $breakpoint) {
+      @content;
+    }
+  }
+}
+
 /*---------------------------------------/*
  # SETTINGS
 /*---------------------------------------*/
 
-/*
-    Settings: Colors
-*/
+// ---
+// Settings: Colors
+// ---
 
 $color-blue: #1abaff;
 $color-blue-hue: hue($color-blue);
@@ -75,9 +94,9 @@ $color-border: get-color(color-gray, 200);
 $color-border-light: get-color(color-gray, 100);
 $color-border-dark: get-color(color-gray, 300);
 
-/*
-    Settings: Typography
-*/
+// ---
+// Settings: Typography
+// ---
 
 $root-font-size: 16;
 
@@ -103,9 +122,9 @@ $ms11: calc($ms10 * $ratio); // 66px
 $font-family-primary: "Helvetica Neue", Helvetica, arial, sans-serif;
 $font-family-secondary: "Times New Roman", Times, serif;
 
-/*
-    Settings: Spacing
-*/
+// ---
+// Settings: Spacing
+// ---
 
 // baseline unit
 $baseline: 0.5rem;
@@ -119,6 +138,18 @@ $space-l: calc($space-m * 2); // 32px
 $space-xl: calc($space-m * 2); // 48px
 $space-xxl: calc($space-l * 2); // 64px
 $space-xxxl: calc($space-xl * 2); // 96px
+
+// ---
+// Settings: Breakpoints
+// ---
+
+$breakpoints: (
+  bp1: calc(577 / 16 * 1em),
+  bp2: calc(769 / 16 * 1em),
+  bp3: calc(993 / 16 * 1em),
+  bp4: calc(1201 / 16 * 1em),
+  bp5: calc(1401 / 16 * 1em),
+) !default;
 
 /*---------------------------------------/*
  # GENERIC
