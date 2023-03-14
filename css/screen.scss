@@ -134,7 +134,7 @@ $space-xxs: calc($baseline * 0.5); // 4px
 $space-xs: calc($baseline * 1); // 8px
 $space-s: calc($baseline * 2); // 16px
 $space-m: calc($baseline * 3); // 24px
-$space-l: calc($space-m * 2); // 32px
+$space-l: calc($space-s * 2); // 32px
 $space-xl: calc($space-m * 2); // 48px
 $space-xxl: calc($space-l * 2); // 64px
 $space-xxxl: calc($space-xl * 2); // 96px
